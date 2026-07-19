@@ -1,3 +1,4 @@
+
 name: Build Android App
 
 on:
@@ -20,8 +21,11 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    # Указываем конкретную версию Gradle (8.4), совместимую с нашим проектом
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: '8.4'
 
     - name: Build APK
       run: gradle assembleDebug
@@ -31,3 +35,6 @@ jobs:
       with:
         name: weather-app-debug
         path: app/build/outputs/apk/debug/app-debug.apk
+
+
+
